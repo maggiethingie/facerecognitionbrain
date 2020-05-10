@@ -103,10 +103,9 @@ class App extends Component {
           input: this.state.input
         })
       })
-      .then(response => response.json() )
+      .then(response => response.json())
       .then(response => {
         if (response) {
-          this.displayFaceBox(this.calculateFaceLocation(response));
           fetch('https://safe-dawn-13242.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
@@ -120,7 +119,7 @@ class App extends Component {
             })
           .catch(console.log)
         }
-        // this.displayFaceBox(this.calculateFaceLocation(response))
+        this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err));
     }
