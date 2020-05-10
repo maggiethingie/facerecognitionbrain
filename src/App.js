@@ -74,6 +74,8 @@ class App extends Component {
   }
 
   calculateFaceLocation = (response) => {
+    console.log("response", response);
+    console.log("response.outputs", response.outputs);
     const clarifaiFace = response.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width);
@@ -103,7 +105,7 @@ class App extends Component {
           input: this.state.input
         })
       })
-      .then(response => response.json())
+      .then(response => response.json() )
       .then(response => {
         if (response) {
           fetch('https://safe-dawn-13242.herokuapp.com/image', {
